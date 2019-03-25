@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC"-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title></title>
+	<style type="text/css">
+		body {background:#fff url(images/aple.jpg);}
+		/*设计外框向左移动*/
+		ul.tunes {margin-left:-20px;}
+		/*定义每个光盘的项样式*/
+		ul.tunes li {
+			position:relative; /*定义包含块*/
+			width:200px;
+			height:190px;
+			float:left;
+			margin-left:20px;
+		}
+		/*音乐盒外框*/
+		ul.tunes li div.album {
+			margin:0 0 48px 0;
+			display:inline;
+			width:200px;
+			height:120px;
+			position: absolute;
+			text-decoration: none;
+			/*定义线性动画，0.15秒，针对所包含的所有元素*/
+			-webkit-transition: all .15s linear;
+			color: #333;
+			left: 0px;
+			top: 0px;
+		}
+		ul.tunes img {
+			width: 120px;
+			position: relative;
+			z-index: 30;
+			float: left;
+			-webkit-box-shadow: 0 3px 6px rgba(0,0,0,.5);/*音乐盒的阴影*/
+			-webkit-border-radius: 2px;/*音乐盒的圆角*/
+		}
+		ul.tunes li div.album div {
+			display: block;
+			opacity: .95;
+			text-align: center;
+			/*线性动画，0.25秒，针对所包含的所有元素*/
+			-webkit-transition: all .25s linear;
+			clear: left;
+			width: 120px; 
+		}
+		ul.tunes li div.album div h5 {text-align: center; }
+		/*鼠标指针经过时外框的不透明度*/
+		ul.tunes li div.album: hover div {opacity: 1; }
+		/*光驱的样式*/
+		ul.tunes li div.album span.vinyl {
+			width: 116px;
+			height: 116px;
+			z-index: 1;
+			display: block;
+			/*线性动画，0.25秒，针对所包含的所有元素*/
+			-webkit-transition: all .25s linear;
+			position: absolute;
+			top: 2px;
+			left: 2px;
+			margin-left: 16px;
+		}
+		/*光驱内框样式*/
+		ul.tunes li div.album span.vinyl div {
+			position: absolute;
+			top: 2px;
+			left: 2px;
+			display: block;
+			z-index: 10;
+			width: 112px;
+			height: 112px;
+			/*定义圆角*/
+			-webkit-border-radius: 59px;
+			-moz-border-radius: 59px;
+			/*线性动画，0.25秒，针对所包含的所有元素*/
+			-webkit-box-shadow: 0 0 6px rgba(0,0,0,.5);
+			-webkit-transition: all .25s linear;
+			overflow: hidden;/*禁止超出外框*/
+			border: solid 1px black;
+			/*设计光驱效果，通过直线渐和径向渐变设计光泽效果*/
+			background:
+			-webkit-gradient(linear,left top,left bottom,from(transparent),color-stop(0.1,transparent),color-stop(0.5,rgba(255,255,255,0.25)),color-stop(0.9,transparent),to(transparent)),-webkit-gradient(radial,56 56,10,56 56,114,from(transparent),color-stop(0.01,transparent),color-stop(0.021,rgba(0,0,0,1)),color-stop(0.09,rgba(0,0,0,1)),color-stop(0.1,rgba(28,28,28,1)),to(rgba(28,28,28,1)));
+			border-top: 1px solid rgba(255,255,255,.25);
+		}
+		/*鼠标经过时，设计出仓动画效果*/
+		ul.tunes li div.album:hover span.vinyl {-webkit-transform:translateX(60px);}
+		/*在出仓过程中旋转内框，营造立体动画效果*/
+		ul.tunes li div.album:hover span.vinyl div {
+			-webkit-transform: rotate(120deg);
+			border-top: 0;
+			border-left: 1px solid rgba(255,255,255,.25);
+		}
+		/*设计掩饰物*/
+		ul.tunes li span.gloss {
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 120px;
+			height: 120px;
+			background: url(images/sheen3.png)no-repeat;
+			z-index: 100;
+		}
+		/*设计音乐盒被激活时样式*/
+		ul.tunes li div.album ul.actions {
+			display: block;
+			position: absolute;
+			width: 60px;
+			/*定义圆角效果*/
+			-moz-border-radius: 3px;
+			-webkit-border-radius: 3px;
+			left: 70px;
+			top: 0px;
+			height: 114px;
+			z-index: 20;
+			/*线性动画，0.25秒，针对所包含的所有元素*/
+			-webkit-transition: all 0.25s linear;
+		}
+		/*激活时光盘出仓动画*/
+		ul.tunes li div.album:hover ul.actions {-webkit-transform:translateX(60px);}
+		/*激活时光盘上按钮样式*/
+		ul.tunes li div.album ul.actions li {
+			display: block;
+			position: absolute;
+			height: 20px;
+			width: 20px;
+			left: 10px;
+			top: 22px;
+			/*设计凹凸效果*/
+			background: -webkit-gradient(linear,left top,left bottom,from(black),to(#333));
+			/*设计圆角*/
+			-webkit-border-radius: 10px;
+			-moz-border-radius: 10px;
+			/*添加阴影*/
+			-webkit-box-shadow: 0 1px 0 rgba(255,255,255,.15);
+		}
+		/*被激活时改变光盘上按钮的凹凸效果*/
+		ul.tunes li div.album ul.actions li:hover {background: -webkit-gradient(linear,left top,left bottom,from(#333),to(black));}
+		ul.tunes li div.album ul.actions li.info {
+			top: 48px;
+			left: 19px;
+		}
+		ul.tunes li div.album ul.actions li a {
+			display: block;
+			width: 20px;
+			height: 20px;
+		}
+		/*播放按钮*/
+		ul.tunes li div.album ul.actions li.play-pause a {background: url(images/play-button.png)no-repeat center center;}
+		/*信息按钮*/
+		ul.tunes li div.album ul.actions li.info a {background: url(images/info.png)no-repeat center center;}
+		ul.tunes li {text-shadow: 0 2px 3px rgba(0,0,0,.75); }
+		ul.tunes h5 {
+			padding-top: 8px;
+			color: #fff; 
+		}
+		ul.tunes small {
+			color: #fff;
+			opacity: .75;
+		}
+	</style>
+</head>
+<body>
+	<ul class="tunes">
+		<li>
+			<div class="album"> <a href=""><img src="images/222.JPG"/></a> <span class="vinyl">
+				<div></div>
+			</span>
+			<ul class="actions">
+				<li class="play-pause"><a href=""></a></li>
+				<li class="info"><a href=""></a></li>
+			</ul>
+			<div>
+				<h5>超人不会飞</h5>
+				<small>作词：周杰伦<br/>作曲：周杰伦<br/>演唱：周杰伦</small></div>
+				<span class="gloss"></span></div>
+		</li>
+	</ul>
+</body>
+</html>
