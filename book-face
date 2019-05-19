@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>管理信息系统封面</title>
+<style type="text/css">
+</style>
+</head>
+<body>
+<div class="page">
+<div class="pafe-main">
+<img src="1.JPG"/>
+<img src="2.JPG"/>
+<div>
+<p>面向21世纪课程教材</p>
+<p>“十二五”普通高等教育本科国家级规划教材</p>
+<p>普通高等教育精品教材</p>
+</div>
+<p>高等学校工商管理类核心课程教材</p>
+<h1>管理信息系统</h1>
+<h6>(第六版)</h6>
+<p>主编 黄梯云 李一军</p>
+<p>副主编 叶强</p>
+</div>
+<div class="page-footer">
+<p>高等教育出版社</p>
+</div>
+</div>
+</body>
+</html>
